@@ -114,6 +114,3 @@ with open(csv_filename, "wb") as f:
     f.write(response.content)
 
 print(f"Alert CSV downloaded as '{csv_filename}'")
-```
-
-Replace `<API_ACCESS_KEY>` and `<API_SECRET_KEY>` with your actual API
