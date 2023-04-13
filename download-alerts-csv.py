@@ -3,9 +3,9 @@ import requests
 import time
 import json
 
-BASE_URL = "https://api.prismacloud.io"
-API_ACCESS_KEY = "<API_ACCESS_KEY>"
-API_SECRET_KEY = "<API_SECRET_KEY>"
+BASE_URL = "https://api.prismacloud.io" #Replace BASE_URL with the URL for your Prisma Cloud stack api1, api2, etc
+API_ACCESS_KEY = "<API_ACCESS_KEY>" #Replace value with your API access key
+API_SECRET_KEY = "<API_SECRET_KEY>" #Replace value with API secret key
 
 """ Prisma Cloud API Documentation
 
