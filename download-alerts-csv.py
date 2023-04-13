@@ -7,6 +7,19 @@ BASE_URL = "https://api.prismacloud.io"
 API_ACCESS_KEY = "<API_ACCESS_KEY>"
 API_SECRET_KEY = "<API_SECRET_KEY>"
 
+""" Prisma Cloud API Documentation
+
+1. Submit Alert CSV Generation Job
+https://pan.dev/prisma-cloud/api/cspm/submit-an-alert-csv-download-job/
+
+2. Get Alert CSV Job Status
+https://pan.dev/prisma-cloud/api/cspm/get-alert-csv-job-status/
+
+3. Download Alert CSV
+https://pan.dev/prisma-cloud/api/cspm/download-alert-csv/
+
+"""
+
 def get_token(api_access_key, api_secret_key):
     url = f"{BASE_URL}/login"
     auth_data = {
