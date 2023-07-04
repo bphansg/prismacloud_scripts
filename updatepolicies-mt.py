@@ -21,7 +21,7 @@ import argparse
 # Replace these with your actual access key and secret key
 access_key = 'Your_Access_Key'
 secret_key = 'Your_Secret_Key'
-# Replace this with your actual tenant URL
+# Replace this with your actual tenant URL, for example: https://api2.prismacloud.io
 url = 'https://Your_Tenant_URL'
 
 # Login URL
