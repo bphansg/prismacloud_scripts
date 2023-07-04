@@ -1,4 +1,4 @@
-''' This script is used to set Prisma Cloud CSPM policies using severity level and set policy status to enabled = true/false
+''' This script can be used to set Prisma Cloud CSPM policies using severity level and set policy status to enabled = true/false
 
 Enabled = true sets policies to enabled
 Enabled = false sets policies to disabled
