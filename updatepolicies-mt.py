@@ -3,6 +3,7 @@
 Enabled = true sets policies to enabled
 Enabled = false sets policies to disabled
 For example: To disable all CSPM policies with severity level of 'informational', use 'python script.py informational true'
+You can specify multiple severity levels separated by comma, for example: python script.py informational,low,medium true
 
 The script usesconcurrent.futures librar for parallel processing.
 
@@ -41,27 +42,27 @@ def get_policies(token):
     policies = response.json()
     return policies
 
-def set_policy_status(token, policy, severity, status):
+def set_policy_status(token, policy, severities, status):
     headers = {
         'x-redlock-auth': token,
         'Content-Type': 'application/json'
     }
-    if policy['severity'] == severity:
+    if policy['severity'] in severities:
         policy['enabled'] = status
         response = requests.put(f"{policies_url}/{policy['policyId']}", headers=headers, json=policy)
         response.raise_for_status()
 
 def main():
-    parser = argparse.ArgumentParser(description='Modify policies based on given severity and status.')
-    parser.add_argument('severity', type=str, choices=['informational', 'low', 'medium', 'high', 'critical'],
-                        help='The severity of the policies to modify.')
+    parser = argparse.ArgumentParser(description='Modify policies based on given severities and status.')
+    parser.add_argument('severities', type=lambda s: [item for item in s.split(',') if item in ['informational', 'low', 'medium', 'high', 'critical']],
+                        help='Comma-separated list of severities of the policies to modify.')
     parser.add_argument('status', type=lambda x: str(x).lower() == 'true', help='The status to set for the policies. Use "true" to enable and "false" to disable.')
     args = parser.parse_args()
 
     token = get_token()
     policies = get_policies(token)
     with concurrent.futures.ThreadPoolExecutor() as executor:
-        futures = [executor.submit(set_policy_status, token, policy, args.severity, args.status) for policy in policies]
+        futures = [executor.submit(set_policy_status, token, policy, args.severities, args.status) for policy in policies]
         for future in concurrent.futures.as_completed(futures):
             try:
                 future.result()
@@ -70,3 +71,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
