@@ -1,9 +1,11 @@
-''' This script can be used to set Prisma Cloud CSPM policies using severity level and set policy status to enabled = true/false
+''' This script can be used to enable or disable Prisma Cloud CSPM policies based on policy severity level(s).
+
+syntax: python3 updatepolicies-mt.py <severity> <true/false>
+for example:  use 'python3 updatepolicies-mt.py high,critical true' to enable all CSPM high and critical policies globally
 
 Enabled = true sets policies to enabled
 Enabled = false sets policies to disabled
-For example: To disable all CSPM policies with severity level of 'informational', use 'python script.py informational true'
-You can specify multiple severity levels separated by comma, for example: python script.py informational,low,medium true
+You can specify multiple severity levels separated by comma, for example: python updatepolicies-mt.pyinformational,low,medium true
 
 The script usesconcurrent.futures librar for parallel processing.
 
