@@ -7,7 +7,7 @@ Enabled = true sets policies to enabled
 Enabled = false sets policies to disabled
 You can specify multiple severity levels separated by comma, for example: python updatepolicies-mt.pyinformational,low,medium true
 
-The script usesconcurrent.futures librar for parallel processing.
+The script uses concurrent.futures librar for parallel processing.
 
 Author: Binh Phan
 
